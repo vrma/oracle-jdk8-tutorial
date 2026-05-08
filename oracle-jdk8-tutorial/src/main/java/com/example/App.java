@@ -25,6 +25,8 @@ package com.example;
  * en variables */
 
 public class App {
+
+	// Metodo sumar
 	
 	static double sumar(double a, double b) {
 		
