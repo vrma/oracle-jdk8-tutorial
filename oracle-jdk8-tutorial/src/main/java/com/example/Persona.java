@@ -24,7 +24,7 @@ package com.example;
  *  La clase, ademas de ser una plantilla sirve como tipo de datos */
 
 
-public class Persona {
+public class Persona extends Object {
 	
 	// A continuacion vamos a especificar o definar lo que caracteriza
 	// a una persona, que se le llama de cualquiera de las formas
@@ -72,6 +72,34 @@ public class Persona {
 	int totalCoches = 2;
 	Genero genero; 
 	
+	// Constructor sin parametros, que es el constructor por defecto
+	// , que se pierde en el momento que creamos otro constructor, 
+	// pero que puede ser creado cuando queramos
+	
+	
+	
+	public Persona(String nombre, String primerApellido, double estatura) {
+		super();
+		this.nombre = nombre;
+		this.primerApellido = primerApellido;
+		this.estatura = estatura;
+	}
+
+	public Persona(String nombre, String primerApellido, double estatura, int totalCoches, Genero genero) {
+		super();
+		this.nombre = nombre;
+		this.primerApellido = primerApellido;
+		this.estatura = estatura;
+		this.totalCoches = totalCoches;
+		this.genero = genero;
+	}
+
+	public Persona() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
 
 }
 
