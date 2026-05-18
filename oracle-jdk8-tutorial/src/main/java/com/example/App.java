@@ -1,91 +1,81 @@
+/*
+ * El alcance o ambito (scope) de los elementos de una clase, que tambien se les llama
+ * los miembros de una clase, que pueden tanto los campos, variables miembros, propiedades
+ * o atributos de la clase, como los metodos o funciones miembros de la clase, solamente 
+ * pueden existir en El Plano de las Clases o en El Plano de las Instancias
+ * 
+ *  ¿Que quiere decir que un elemento vive en El Plano de las Instancias? 
+ *  
+ *  Quiere decir que para el elemento exista tiene que ser a traves de un objeto o una 
+ *  instancia de la clase que lo contiene 
+ *  
+ *  ¿Que quiere decir que un elemento vive en El Plano de las Clases ?
+ *  
+ *  Quiere decir, que no hace falta crear un objeto, o instancia, de la clase que lo contiene
+ *  para que el elemento tenga vida
+ *  
+ *  ¿Como distinguir un elemento (variable o metodo) para saber en cual plano existe?
+ *  
+ *  Rta. Por el modificador static que llevaria delante si se trata de un elemento que 
+ *  vive en El Plano de las Clases, y de lo contrario, es decir, si viviera en el plano de las
+ *  instancias NO llevaria delante el modificador static */
+
 package com.example;
 
 public class App {
+	
+	// La variable siguiente es una variable de instancia, porque no lleva el modificador static
+	
+	int variable1 = 5;
+	
+	// La siguiente variable es de Clase porque lleva delante el modificador static
+	
+	static double salario = 3500.25;
 
 	public static void main(String[] args) {
 		
-		/**
-		 * ¿Como crear o instanciar objetos?
+		// Imprimir el valor de la variable, o campo de la clase, variable1
+		
+		// Estudiante estudiante1 = new Estudiante();
+		
+		// Instancia u objeto de la clase contenedora de la variable variable1
+		App app = new App();
+		
+		System.out.println(app.variable1);
+		
+		// El codigo anterior esta bien, pero es excesivo, porque declarar una variable
+		// para solamente utilizarla una vez es una mala practica de programacion
+		
+		System.out.println(new App().variable1);
+		
+		/* Lo dice Jakelin que ha hecho */
+		
+		App app1 = new App();
+		
+		app1.variable1 = 6;
+		
+		/* A la variable salario puedo acceder sin hacer nada en absoluto, porque 
+		 * es static y desde un metodo static, como es el metodo main puede acceder a
+		 * la misma sin ningun codigo adicional */
+		
+		System.out.println(salario);
+		
+		/* ¿Como acceder a una variable static que esta declarada en otra clase, como
+		 * podria ser la clase Persona? 
 		 * 
-		 * Invocando o llamando a un constructor de la clase del tipo de objeto 
-		 * que queremos crear
+		 * Utilizando el nombre de la clase como prefijo
 		 * 
-		 * A modo de ejemplo:
-		 * 
-		 * Queremos crear un objeto de tipo Persona, para lo cual vamos a llamar o invocar 
-		 * al constructor de la clase Persona
-		 * 
-		 * ¿Que es un constructor? 
-		 * 
-		 * Es un metodo que tiene el mismo nombre que la clase. 
-		 * Por defecto, todas las clases tienen un constructor implicito, sin parametros,
-		 * que te han otorgado gratuitamente y que lo pierdes en cuanto creas otro constructor 
-		 * 
-		 * Para crear o instanciar el objeto, el constructor hay que prefijarlo con el operador
-		 * new 
-		 * 
-		 */
+		 * Y para ejemplificar sopongamos que tenemos una variable, que es una constante,
+		 * en la clase Persona, para que todas las personas creadas sean del mismo pais */
 		
-		int x = 45;
+		System.out.println("El pais de todas las personas es: " + Persona.PAIS);
 		
-		/* En la sentencia que aparece a continuacion, la creacion o instanciacion del objeto 
-		 * Persona tiene lugar a traves de la sentencia new Persona(), es decir, a traves de la
-		 * invocacion del constructor de la clase Persona. 
-		 * Y la variable persona1 NO ES EL OBJETO, es una referencia, que en algunos lenguajes 
-		 * de programacion como C++ se le llama un puntero, o apuntador, porque apunta a la 
-		 * direccion de memoria donde reside el objeto creado 
-		 * Y, tambien, a traves de la variable persona1 es que puedo acceder a los elementos
-		 * que estan en la clase Persona, utilizando el operador punto (.) */
+		/* Que los enum son eminentemente estaticos, por este motivo, las constantes
+		 * de un tipo enum se prefijan con el nombre del enumerable */
 		
-		Persona persona1 = new Persona();
-		
-		// Para mostrar el nombre de la persona
-		
-		System.out.println("El nombre de la persona1 es: " + persona1.nombre); 
-		
-		Persona persona2 = new Persona("Juan", "Mtnez", 1.80);
-		
-		
-		/* Ejercicio # 1. Crear una clase que se llame Estudiante, que tenga como propiedades
-		 * 
-		 * 1. nombre
-		 * 2. apellido1
-		 * 3. apellido2
-		 * 4. totalAsignaturas
-		 * 5. facultad, que sea un tipo enum, con las constantes INFORMATICA, CIENCIAS, MATEMATICAS 
-		 * 
-		 * Segundo:
-		 * 
-		 * El metodos main, poder crear objetos estudiantes, sin parametros, es decir, vacios y
-		 * tambien que los pueda crear suministrandoles el nombre, apellido1, totalAsignaturas 
-		 * y la facultad donde estudia */
-		
-		/* Ejemplo:
-		 * 
-		 * Pido declarar una variable */
-		
-		// Simplemente la declaracion de la variable
-		Estudiante estudiante3;
-		
-		
-		// Crear o instanciar el objeto implica invocar o llamar al constructor de la clase
-		estudiante3 = new Estudiante();
-		
-		// Declara una variable de tipo double y asignale el valor 3.14
-		
-		double xx = 3.14;
-		
-		String yyyy = "Pepito";
-		
-		
-		/* Creando objetos estudiante */
-		
-		Estudiante estudiante6;
-		
-		estudiante6 = new Estudiante("Maria", "Mtnez", "Machado", 10, Facultad.MATEMATICAS);
+		System.out.println("El genero de la persona es: " + Genero.MUJER);
 		
 		
 		
-
 	}
 }
